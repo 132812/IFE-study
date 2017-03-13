@@ -71,16 +71,16 @@
 }
 
 .linearText{
+	display: table;
 	position: absolute;
+	height: 100%;
 	width: 100%;
-	top: 25%;
-	left: 25%;
+	top: 0;
+	left: 0;
 }
 
 .linearText p{
-	margin: 0;
 	font-size: 22px;
-	width: 170px;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
