@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	/*
+	text-fill-color是覆盖原来字体的颜色,可以进行文字遮盖
+	可以用来做镂空文字--->将文字颜色设置为透明，然后使用text-stroke描边，
+	text-stroke分有text-stroke-width和text-stroke-color,指定了边的宽度和颜色
+	*/
+	p{
+		font-size: 40px;
+		/*color: transparent;*/
+		background-image: -webkit-linear-gradient(#eee, #000);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color:transparent;
+		-webkit-text-stroke:1px transparent;
+		/*background-image:-webkit-linear-gradient(#eee,#000);*/
+		/*-webkit-background-clip:text;*/
+		/*-webkit-text-fill-color:transparent;*/
+		/*-webkit-text-stroke:1px transparent;*/
+	}		
+
+
+	</style>
+</head>
+<body>
+	<p>世界有了你，风和日暖</p>
+</body>
+</html>

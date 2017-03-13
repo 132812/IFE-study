@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	/*
+	liner-gradient线性渐变，背景图像验证一个方向进行渐变。
+	liner-gradient([<angle> || <point>,]? <color-stop>, <color-stop> [, <color-stop>]*)	
+	angle或者point指的是线性渐变的方向，color是渐变的颜色，最少为两个,为起点和终点颜色。
+	当没有给color-stop指定位置，则根据颜色数量平均分配
+	指定位置应在color的后面，如 red 20%, blue 60%, green 100%.
+	*/
+	.masked{
+		width: 200px;
+		height: 100px;
+		/*background-color: #f96;*/
+		/*background: -webkit-linear-gradient(top, #ace, #f96);*/
+		/*background: -webkit-linear-gradient(left, #ace, #f96, #ace);*/
+		/*background: -webkit-linear-gradient(left top, #ace, #f96);*/
+		/*background: -webkit-linear-gradient(bottom, #ace, #f96);*/
+		/*background: -webkit-linear-gradient(left,red,#f96,yellow,green,#ace);*/
+		/*background-image: -webkit-linear-gradient(right, rgba(255,255,255,0), rgba(255,255,255,1)),url(1.jpg);*/
+		/*background-size: 100% 100%;*/
+		background: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96););
+		background-size: 200% 100%;
+		/*background-position: 0 0;*/
+		-webkit-animation: my-animation 2s infinite linear; 	
+	}
+
+	@-webkit-keyframes my-animation {
+		from { background-position: 0 0; }
+		to { background-position: -100% 0; }
+	}
+	@-o-keyframes my-animation {
+		from { background-position: 0 0; }
+		to { background-position: -100% 0; }
+	}
+	@-moz-keyframes my-animation {
+		from { background-position: 0 0; }
+		to { background-position: -100% 0; }
+	}
+	@keyframes my-animation {
+		from { background-position: 0 0; }
+		to { background-position: -100% 0; }
+	}
+	</style>
+</head>
+<body>
+<!-- 
+none：无背景图。
+< url >：使用绝对或相对地址指定背景图像。
+< linear-gradient>：使用线性渐变创建背景图像。（CSS3）
+< radial-gradient>：使用径向(放射性)渐变创建背景图像。（CSS3）
+< repeating-linear-gradient>：使用重复的线性渐变创建背景图像。（CSS3）
+< repeating-radial-gradient>：使用重复的径向(放射性)渐变创建背景图像。（CSS3）
+ -->
+	<div class="masked">
+		
+	</div>
+</body>
+</html>

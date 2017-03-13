@@ -1,0 +1,120 @@
+.linearImage{
+	
+	position: absolute;
+	width: 350px;
+	height: 220px;
+	top: 30%;
+	left: 35%;
+
+}
+
+.blurImage{
+	width: 100%;
+	height: 100%;
+	background: url(../image/gakki.jpg) no-repeat left top;
+	background-size: contain;
+}
+
+.borderBox{
+	opacity: 0;
+	position: absolute;
+	width: 95%;
+	height: 95%;
+	top: 2.5%;
+	left: 2.5%;
+	transition: all 1s;
+}
+
+.lineBorderBox, .verticalBorderBox{
+	box-sizing: border-box;
+	position: absolute;
+	border: 0px solid #eee;	
+	transition: all 1s;
+	visibility: hidden;
+}
+
+.lineBorderBox{
+	border-width: 0 3px;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: 0;
+}
+
+.verticalBorderBox{
+	border-width: 3px 0;
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 100%;
+}
+
+.linearImage:hover .borderBox{
+	opacity: 1;
+}
+
+.linearImage:hover .lineBorderBox{
+	top: 0;
+	height: 100%;
+	visibility: visible;
+}
+
+.linearImage:hover .verticalBorderBox{
+	left: 0;
+	width: 100%;
+	visibility: visible;
+}
+
+.linearImage:hover .blurImage{
+	filter: blur(1px);
+	-webkit-filter: blur(2px);
+}
+
+.linearText{
+	position: absolute;
+	width: 100%;
+	top: 25%;
+	left: 25%;
+}
+
+.linearText p{
+	margin: 0;
+	font-size: 22px;
+	width: 170px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.8s;
+}
+
+.linearText p{
+	background-image:  -webkit-linear-gradient(left, #eee, #147B96 25%, #eee 50%, #147B96 75%, #eee);
+	-webkit-background-size: 200% 100%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: mylinear-animation 4s infinite linear;
+}
+
+@-webkit-keyframes mylinear-animation {
+	from { background-position: 0 0; }
+	to { background-position: -100% 0; }
+}
+@-o-keyframes mylinear-animation {
+	from { background-position: 0 0; }
+	to { background-position: -100% 0; }
+}
+@-moz-keyframes mylinear-animation {
+	from { background-position: 0 0; }
+	to { background-position: -100% 0; }
+}
+@keyframes mylinear-animation {
+	from { background-position: 0 0; }
+	to { background-position: -100% 0; }
+}
+
+.linearImage:hover .linearText p{
+	visibility: visible;
+	opacity: 1;
+}
