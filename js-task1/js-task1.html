@@ -20,7 +20,33 @@
   在事件处理函数中
   获取aqi-input输入的值，并显示在aqi-display中
   */
-  asdas
+  var showText = document.getElementById("aqi-display"),
+      inputText = document.getElementById("aqi-input"),
+      btn = document.getElementById("button");
+
+  function showValue(){
+    
+    showText.innerText = inputText.value.trim();
+  }
+  
+  addHandler(button, "click", showValue);
+  
+  /*
+  将事件处理程序添加到在节点上面
+  attachEvent适用于IE浏览器
+  addEventListener适用于其他浏览器
+  element.on不可以同时为元素添加同一个事件
+  */
+  function addHandler(element, type, fun){
+    if(element.addEventListener){
+      element.addEventListener(type, fun, false);
+    }else if(element.attachEvent){
+      element.attachEvent("on"+type, fun);
+    }else {
+      element["on"+type] = fun;
+    }
+  }
+
 })();
 
 </script>
