@@ -81,6 +81,7 @@
 
 .linearText p{
 	font-size: 22px;
+	padding: 0 10%;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
