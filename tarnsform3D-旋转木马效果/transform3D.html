@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transform3D效果</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.stage{
+			margin: 20px auto;
+			min-height: 600px;
+			width: 800px;
+			position: relative;
+			border: 1px solid #ccc;
+			background-color: rgba(9, 1, 60, 0.4);
+			box-shadow: inset 0 0 3px rgba(0,0,0,.35);	
+
+			-webkit-perspective: 800px;
+			   -moz-perspective: 800px;
+				    perspective: 800px;
+
+		}
+
+		.container{
+			width: 128px;
+			height: 100px;
+			top: 50%;
+			margin-left: -60px;
+
+			-webkit-transform-style: preserve-3d;
+			-moz-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+
+			transition: all 1s;
+
+			position: absolute;
+			left: 50%;
+		}	
+
+		.img{
+			width: 128px;
+			box-shadow: 0 1px 3px rgba(0,0,0,.5);
+			
+			position: absolute;
+			bottom: 0;
+		}
+
+		.button{
+			position: absolute;
+			top: 80%;
+			left: 45%;
+		}
+	</style>
+		
+</head>
+<body>
+	
+	<div class="stage" id="stage">
+		<div class="container" id="container"></div>
+		<div class="button">
+			<button id="prev" data-increment="1">prev</button>
+			<button id="next" data-increment="-1">next</button>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	(function() {
+		var $ = function(selector){
+					return document.querySelector(selector);
+			},
+			$$ = function(selector){
+					return document.querySelectorAll(selector);
+			},
+			transform = function(ele, value, key) {
+				key = key || "Transform";
+				["Moz", "O", "Ms", "Webkit", ""].forEach(function(prefix) {
+					ele.style[prefix + key] = value;	
+			});
+
+				return ele;
+			};	
+
+		var container = $("#container"),
+			stage     = $("#stage"),
+			prev      = $("#prev"),
+			next	  = $("#next"),
+			pic 	  = "",
+			arrayPic  = [1,2,3,4,5,6,7,8,9],
+			index 	  = 0,
+			rotate 	  = 360 / arrayPic.length,
+			rotates	  = 0;
+
+		arrayPic.forEach(function(item, index) {
+			pic += "<img class='img' id='img" + item + "' src='img/1 (" + Number(index+1) + ").JPG' />";
+		});
+
+		container.innerHTML = pic;
+		var imgs = $$(".img");
+		transZ = 64 / Math.tan((rotate / 2 / 180) * Math.PI);
+
+		arrayPic.forEach(function(i, j) {
+			transform($("#img" + i), "rotateY("+ j * rotate +"deg) translateZ("+ (transZ + 20) +"px)");	
+		});	
+
+
+		function turn(event){
+			var event = event || window.event,
+				target = event.target || event.srcElement,
+				increment = parseInt(target.getAttribute('data-increment'));
+			rotates +=  rotate * increment;
+
+				transform(container, "rotateY("+ rotates +"deg)");
+
+		}
+
+		container.addEventListener("click", function() {
+			rotates += rotate * -1;
+			transform(this, "rotateY("+ rotates +"deg)");	
+		});
+
+		next.addEventListener("click", turn, false);
+		prev.addEventListener("click", turn, false);
+
+
+	})();
+</script>
+</body>
+</html>
